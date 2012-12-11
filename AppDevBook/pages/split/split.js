@@ -50,6 +50,17 @@
                 // appear in the ListView.
                 listView.selection.set(Math.max(this._itemSelectionIndex, 0));
             }
+
+            // workaround for removing youtube player.
+            nav._back = nav.back;
+            nav.back = function () {
+                var ifrm = document.getElementById("player");
+                ifrm.src = "/pages/blank/blank.html";
+                ifrm.onload = function () {
+                    nav.back = nav._back
+                    nav.back();
+                }
+            }
         },
 
         unload: function () {
@@ -133,15 +144,15 @@
                         details.scrollTop = 0;
 
                         var ifrm = document.getElementById("player");
-                        if (ifrm)
-                        {
-                            ifrm.removeNode();
-                        }
-                        var vpo = items[0].data.videoPlayer;
-                        if (vpo) {
-                            vpo.width = window.getComputedStyle(document.querySelector(".articlesection")).width;
-                            vpo.height = vpo.width * 390/640;
-                            details.appendChild(vpo);
+
+                        var vid = items[0].data.videoId;
+                        var embed_url = "http://www.youtube.com/embed/" + vid + "?enablejsapi=1&rel=0&showinfo=0&autoplay=1&";
+                        if (vid) {                          
+                            ifrm.src = embed_url;
+                            ifrm.width = window.getComputedStyle(document.querySelector(".articlesection")).width;
+                            ifrm.height = ifrm.width * 390 / 640;
+                        } else {
+                            ifrm.src = "/pages/blank/blank.html";
                         }
                     }
                 }
@@ -168,4 +179,5 @@
             }
         }
     });
+
 })();

@@ -48,10 +48,10 @@
                 }
 
             .splitpage .itemlistsection .itemlist .item {
-                -ms-grid-columns: 110px 1fr;
+                -ms-grid-columns: 120px 1fr;
                 -ms-grid-rows: 1fr;
                 display: -ms-grid;
-                height: 110px;
+                height: 90px;
                 width: 500px;
             }
 
@@ -92,25 +92,17 @@
     }
 
         .splitpage .articlesection header {
-            -ms-grid-columns: 180px 20px 1fr;
-            -ms-grid-rows: 180px;
             display: -ms-grid;
             margin-bottom: 5px;
             margin-top: 60px;
         }
 
             .splitpage .articlesection header .text {
-                -ms-grid-column: 3;
             }
 
                 .splitpage .articlesection header .text .article-subtitle {
                     margin-top: 4px;
                 }
-
-            .splitpage .articlesection header .article-image {
-                height: 180px;
-                width: 180px;
-            }
 
         .splitpage .articlesection .article-content {
             overflow-y: auto;
