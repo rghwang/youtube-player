@@ -1,48 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-
-  <Identity
-    Name="6ab37670-d3b5-4c75-a6ac-f4f6f8608a1d"
-    Version="1.0.0.0"
-    Publisher="CN=rghwang" />
-
+  <Identity Name="37110UXFactory.Windows8" Version="1.0.0.5" Publisher="CN=51E88703-C551-47A3-AAF0-D0DE66B090BF" />
   <Properties>
-    <DisplayName>AppDevBook</DisplayName>
-    <PublisherDisplayName>rghwang</PublisherDisplayName>
+    <DisplayName>Windows 8 앱 개발 가이드</DisplayName>
+    <PublisherDisplayName>UXFactory</PublisherDisplayName>
     <Logo>images\storelogo.png</Logo>
   </Properties>
-
   <Prerequisites>
     <OSMinVersion>6.2.1</OSMinVersion>
     <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
   </Prerequisites>
-
   <Resources>
     <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application 
-      Id="App"
-      StartPage="default.html">
-
-      <VisualElements
-        DisplayName="AppDevBook"
-        Logo="images\logo.png"
-        SmallLogo="images\smalllogo.png"
-        Description="AppDevBook"
-        ForegroundText="light"
-        BackgroundColor="#464646">
-
-        <DefaultTile ShowName="allLogos" />
+    <Application Id="App" StartPage="default.html">
+      <VisualElements DisplayName="Windows 8 앱 개발 가이드" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="Windows 8 앱 개발 방법을 다룬 동영상 시리즈를 편리하게 볼 수 있도록 만든 동영상 강좌 앱입니다." ForegroundText="light" BackgroundColor="#464646">
+        <DefaultTile ShowName="allLogos" WideLogo="images\WideLogo.png" />
         <SplashScreen Image="images\splashscreen.png" />
-
       </VisualElements>
+      <Extensions>
+        <Extension Category="windows.search" />
+      </Extensions>
     </Application>
   </Applications>
-
   <Capabilities>
     <Capability Name="internetClient" />
   </Capabilities>
-
 </Package>

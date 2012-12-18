@@ -1,4 +1,5 @@
-﻿.itemspage section[role=main] {
+﻿
+.itemspage section[role=main] {
     -ms-grid-row: 1;
     -ms-grid-row-span: 2;
 }
@@ -41,12 +42,12 @@
             .itemspage .itemslist .item .item-overlay .item-title {
                 -ms-grid-row: 1;
                 overflow: hidden;
-                width: 220px;
+                width: 440px;                
             }
 
             .itemspage .itemslist .item .item-overlay .item-subtitle {
                 -ms-grid-row: 2;
-                width: 220px;
+                width: 440px;
             }
 
 @media screen and (-ms-view-state: fullscreen-landscape), screen and (-ms-view-state: fullscreen-portrait), screen and (-ms-view-state: filled) {
@@ -96,7 +97,7 @@
         }
 
         .itemspage .itemslist .item {
-            -ms-grid-columns: 60px 10px 1fr;
+            -ms-grid-columns: 80px 10px 1fr;
             -ms-grid-rows: 1fr;
             display: -ms-grid;
             height: 60px;
@@ -107,7 +108,7 @@
                 -ms-grid-column: 1;
                 -ms-grid-row-span: 1;
                 height: 60px;
-                width: 60px;
+                width: 80px;
             }
 
             .itemspage .itemslist .item .item-overlay {

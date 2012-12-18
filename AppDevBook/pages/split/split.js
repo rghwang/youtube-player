@@ -6,6 +6,8 @@
     var nav = WinJS.Navigation;
     var ui = WinJS.UI;
     var utils = WinJS.Utilities;
+    var dtm = Windows.ApplicationModel.DataTransfer.DataTransferManager;
+    var selectedItem = null;
 
     ui.Pages.define("/pages/split/split.html", {
 
@@ -38,7 +40,21 @@
                 if (this._itemSelectionIndex >= 0) {
                     // For single-column detail view, load the article.
 
-                    binding.processAll(element.querySelector(".articlesection"), this._items.getAt(this._itemSelectionIndex));
+                    binding.processAll(element.querySelector(".articlesection"), selectedItem);
+
+                    var ifrm = document.getElementById("player");
+
+                    var vid = selectedItem.videoId;
+                    var embed_url = "http://www.youtube.com/embed/" + vid + "?enablejsapi=1&rel=0&showinfo=0&autoplay=1&";
+                    if (vid) {
+                        ifrm.src = embed_url;
+                        ifrm.width = window.getComputedStyle(document.querySelector(".articlesection")).width;
+                        ifrm.height = ifrm.width * 390 / 640 + 90;
+                    } else {
+                        ifrm.src = "/pages/blank/blank.html";
+                    }
+
+
                 }
             } else {
                 if (nav.canGoBack && nav.history.backStack[nav.history.backStack.length - 1].location === "/pages/split/split.html") {
@@ -52,14 +68,28 @@
             }
 
             // workaround for removing youtube player.
-            nav._back = nav.back;
+            if( nav._back == null) nav._back = nav.back;
             nav.back = function () {
                 var ifrm = document.getElementById("player");
                 ifrm.src = "/pages/blank/blank.html";
                 ifrm.onload = function () {
-                    nav.back = nav._back
+                    nav.back = nav._back;
+                    nav._back = null;
                     nav.back();
                 }
+            }
+
+            dtm.getForCurrentView().addEventListener("datarequested", this.onDataRequested);
+        },
+
+        onDataRequested: function (e) {
+            var request = e.request;
+            request.data.properties.title = selectedItem.title;
+            request.data.properties.description = selectedItem.description;
+            if (selectedItem.videoId == undefined || selectedItem.videoId == "")
+                request.data.setHtmlFormat(Windows.ApplicationModel.DataTransfer.HtmlFormatHelper.createHtmlFormat(selectedItem.content));
+            else {
+                request.data.setUri(new Windows.Foundation.Uri("http://www.youtube.com/watch?v=" + selectedItem.videoId));
             }
         },
 
@@ -94,6 +124,13 @@
                         state: { groupKey: this._group.key }
                     });
                     element.querySelector(".articlesection").focus();
+
+                    var ifrm = document.getElementById("player");
+
+                    ifrm.width = 280;
+                    ifrm.height = 260;
+
+
                 } else {
                     listView.addEventListener("contentanimating", handler, false);
                     if (firstVisible >= 0 && listView.itemDataSource.list.length > 0) {
@@ -133,10 +170,17 @@
             listView.selection.getItems().done(function updateDetails(items) {
                 if (items.length > 0) {
                     this._itemSelectionIndex = items[0].index;
+
+                    if (this._itemSelectionIndex >= 0)
+                        selectedItem = this._items.getAt(this._itemSelectionIndex);
+                    else
+                        selectedItem = this._items.getAt(0);
+                    
                     if (this._isSingleColumn()) {
                         // If snapped or portrait, navigate to a new page containing the
                         // selected item's details.
                         nav.navigate("/pages/split/split.html", { groupKey: this._group.key, selectedIndex: this._itemSelectionIndex });
+
                     } else {
                         // If fullscreen or filled, update the details column with new data.
                         details = document.querySelector(".articlesection");

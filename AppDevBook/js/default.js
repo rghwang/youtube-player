@@ -9,6 +9,24 @@
     var activation = Windows.ApplicationModel.Activation;
     var nav = WinJS.Navigation;
 
+
+    function onSettingsCommand(e) {
+        var uri = Windows.Foundation.Uri("http://uxfactory.tistory.com/10");
+        Windows.System.Launcher.launchUriAsync(uri).then(
+            function (success) {
+                if (success) {
+
+                } else {
+
+                }
+            }
+        );
+    }
+    function onCommandsRequested(e) {
+        var settingsCommand = new Windows.UI.ApplicationSettings.SettingsCommand("privacy", "개인 정보 보호 정책", onSettingsCommand);
+        e.request.applicationCommands.append(settingsCommand);
+    }
+
     app.addEventListener("activated", function (args) {
         if (args.detail.kind === activation.ActivationKind.launch) {
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
@@ -18,6 +36,10 @@
                 // TODO: This application has been reactivated from suspension.
                 // Restore application state here.
             }
+
+
+            var settingsPane = Windows.UI.ApplicationSettings.SettingsPane.getForCurrentView();
+            settingsPane.addEventListener("commandsrequested", onCommandsRequested);
 
             if (app.sessionState.history) {
                 nav.history = app.sessionState.history;
@@ -42,4 +64,7 @@
     };
 
     app.start();
+
+
+
 })();

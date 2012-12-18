@@ -50,25 +50,33 @@
   <PropertyGroup>
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
     <TargetPlatformVersion>8.0</TargetPlatformVersion>
-    <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>AppDevBook_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <DefaultLanguage>ko-kr</DefaultLanguage>
+    <PackageCertificateKeyFile>AppDevBook_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>C105A321D589D76BE93B581387E509B5717D0B1E</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="AppDevBook_StoreKey.pfx" />
     <Content Include="css\default.css" />
     <Content Include="images\logo.png" />
     <Content Include="images\smalllogo.png" />
     <Content Include="images\splashscreen.png" />
     <Content Include="images\storelogo.png" />
+    <Content Include="images\widelogo.png" />
     <Content Include="js\data.js" />
     <Content Include="js\default.js" />
     <Content Include="js\navigator.js" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="pages\blank\blank.html" />
     <Content Include="pages\items\items.css" />
     <Content Include="pages\items\items.html" />
     <Content Include="pages\items\items.js" />
+    <Content Include="pages\search\search.css" />
+    <Content Include="pages\search\search.html" />
+    <Content Include="pages\search\search.js" />
     <Content Include="pages\split\split.css" />
     <Content Include="pages\split\split.html" />
     <Content Include="pages\split\split.js" />
