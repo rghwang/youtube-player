@@ -1,4 +1,9 @@
-﻿(function () {
+﻿// 스냅뷰에서 전체화면 전환시 영상 끊기는 문제
+
+// 스냅뷰 상태에서 전체화면 눌렀을 때 처리
+// 1. 스냅뷰 강제 해제+전체화면
+
+(function () {
     "use strict";
 
     var appViewState = Windows.UI.ViewManagement.ApplicationViewState;
@@ -15,7 +20,12 @@
         _items: null,
         _group: null,
         _itemSelectionIndex: -1,
-
+        videoFullScreen: false,
+        playerWidth:0,
+        playerHeight: 0,
+        backbutton: null,
+        backbuttonHandler: null,
+        GRID_COLUMNS_VIDEO_FULLSCREEN: "86px 0px 0px 1fr",
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
         ready: function (element, options) {
@@ -48,8 +58,8 @@
                     var embed_url = "http://www.youtube.com/embed/" + vid + "?enablejsapi=1&rel=0&showinfo=0&autoplay=1&";
                     if (vid) {
                         ifrm.src = embed_url;
-                        ifrm.width = window.getComputedStyle(document.querySelector(".articlesection")).width;
-                        ifrm.height = ifrm.width * 390 / 640 + 90;
+                        ifrm.width = this.playerWidth = window.getComputedStyle(document.querySelector(".articlesection")).width;
+                        ifrm.height = this.playerHeight = ifrm.width * 390 / 640 + 90;
                     } else {
                         ifrm.src = "/pages/blank/blank.html";
                     }
@@ -68,7 +78,7 @@
             }
 
             // workaround for removing youtube player.
-            if( nav._back == null) nav._back = nav.back;
+            if (nav._back == null) nav._back = nav.back;
             nav.back = function () {
                 var ifrm = document.getElementById("player");
                 ifrm.src = "/pages/blank/blank.html";
@@ -78,10 +88,48 @@
                     nav.back();
                 }
             }
+            var _this = this;
+            document.getElementById("fullscreen_btn").addEventListener("click", this.forceFullScreen.bind(this));
 
             dtm.getForCurrentView().addEventListener("datarequested", this.onDataRequested);
         },
+        forceFullScreen: function () {
+            if (this._isSingleColumn()) {
+                var m = new Windows.UI.Popups.MessageDialog("스냅뷰, 포트레이트 모드를 기본 모드로 변경한 후에 전체화면을 실행해주세요.");
+                m.showAsync();
+                return false;
+            }
+            this.videoFullScreen = true;
+            //-ms-grid-columns: 106px 534px 50px 1fr;
+            var grid = document.querySelector(".splitpage");
+            grid.style.msGridColumns = this.GRID_COLUMNS_VIDEO_FULLSCREEN;
+            var player = document.getElementById("player");
+            this.playerWidth = player.width;
+            this.playerHeight = player.height;
+            player.width = document.body.clientWidth - 106;
+            player.height = document.body.clientHeight;
+            player.style.display = "block";
+            player.style.position = "absolute";
+            player.style.top = "0px";
+            player.style.left = "0px";
+            this.backbutton = document.querySelector(".win-backbutton");
+            this.backbuttonHandler = this.backbutton.onclick;
+                
+            this.backbutton.onclick = this.restoreFullScreen.bind(this);
 
+        },
+        restoreFullScreen: function () {
+            this.videoFullScreen = false;
+            var grid = document.querySelector(".splitpage");
+            delete grid.style.removeProperty("-ms-grid-columns");
+
+            var player = document.getElementById("player");
+            player.width = this.playerWidth;
+            player.height = this.playerHeight;
+            player.style.display = "block";
+            player.style.position = "relative";
+            this.backbutton.onclick = this.backbuttonHandler;
+        },
         onDataRequested: function (e) {
             var request = e.request;
             request.data.properties.title = selectedItem.title;
@@ -101,6 +149,8 @@
         updateLayout: function (element, viewState, lastViewState) {
             /// <param name="element" domElement="true" />
 
+            if(this.videoFullScreen) this.restoreFullScreen();
+
             var listView = element.querySelector(".itemlist").winControl;
             var firstVisible = listView.indexOfFirstVisible;
             this._updateVisibility();
@@ -111,6 +161,7 @@
             }
 
             if (this._isSingleColumn()) {
+
                 listView.selection.clear();
                 if (this._itemSelectionIndex >= 0) {
                     // If the app has snapped into a single-column detail view,
@@ -127,8 +178,12 @@
 
                     var ifrm = document.getElementById("player");
 
-                    ifrm.width = 280;
-                    ifrm.height = 260;
+                    if (viewState === Windows.UI.ViewManagement.ApplicationViewState.snapped) {
+                        ifrm.width = 280;
+                        ifrm.height = 260;
+                    } else {
+                        ifrm.src = ifrm.src;
+                    }
 
 
                 } else {
@@ -175,7 +230,7 @@
                         selectedItem = this._items.getAt(this._itemSelectionIndex);
                     else
                         selectedItem = this._items.getAt(0);
-                    
+
                     if (this._isSingleColumn()) {
                         // If snapped or portrait, navigate to a new page containing the
                         // selected item's details.
@@ -191,7 +246,7 @@
 
                         var vid = items[0].data.videoId;
                         var embed_url = "http://www.youtube.com/embed/" + vid + "?enablejsapi=1&rel=0&showinfo=0&autoplay=1&";
-                        if (vid) {                          
+                        if (vid) {
                             ifrm.src = embed_url;
                             ifrm.width = window.getComputedStyle(document.querySelector(".articlesection")).width;
                             ifrm.height = ifrm.width * 390 / 640;
@@ -206,6 +261,7 @@
         // This function toggles visibility of the two columns based on the current
         // view state and item selection.
         _updateVisibility: function () {
+
             var oldPrimary = document.querySelector(".primarycolumn");
             if (oldPrimary) {
                 utils.removeClass(oldPrimary, "primarycolumn");

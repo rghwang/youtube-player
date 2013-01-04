@@ -29,7 +29,7 @@
 
     <!-- The content that will be loaded and displayed. -->
     <div class="splitpage fragment">
-        <header aria-label="Header content" role="banner">
+        <header aria-label="Header content" role="banner" id="titlearea">
             <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
             <h1 class="titlearea win-type-ellipsis">
                 <span class="pagetitle"></span>
@@ -46,8 +46,9 @@
                         <h4 class="article-subtitle" data-win-bind="textContent: subtitle"></h4>
                     </div>
                 </header>
+                <button id="fullscreen_btn">전체화면 보기</button>
                 <div class="article-content" data-win-bind="innerHTML: content"></div>
-                <iframe id="player" src="/pages/blank/blank.html" />
+                <iframe id="player" src="/pages/blank/blank.html"/>
             </article>
         </div>
     </div>

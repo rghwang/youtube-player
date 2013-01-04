@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="37110UXFactory.Windows8" Version="1.0.0.5" Publisher="CN=51E88703-C551-47A3-AAF0-D0DE66B090BF" />
+  <Identity Name="37110UXFactory.Windows8" Version="1.0.0.7" Publisher="CN=51E88703-C551-47A3-AAF0-D0DE66B090BF" />
   <Properties>
     <DisplayName>Windows 8 앱 개발 가이드</DisplayName>
     <PublisherDisplayName>UXFactory</PublisherDisplayName>
