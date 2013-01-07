@@ -16,3 +16,7 @@ Windows 스토어에서 "윈도우8 앱 개발 가이드" 다운로드하기 : h
             { key: "group1", title: "JavaScript를 이용한 앱 개발", subtitle: "Windows 8 스토어 앱 개발", backgroundImage: darkGray },
             { key: "group2", title: "C#를 이용한 앱 개발", subtitle: "Windows 8 스토어 앱 개발", backgroundImage: darkGray },
         ];
+
+
+각 동영상 그룹의 갯수 만큼 {} 부분을 추가합니다. 각 그룹 뒤에는 콤마(,)가 들어가야 합니다.
+key는 각 그룹의 고유 이름이 들어가면 되고(group1, group2, group3,...), title에는 그룹의 이름, subtitle에는 부제가 들어가면 됩니다.
