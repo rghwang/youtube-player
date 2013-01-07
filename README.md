@@ -65,6 +65,8 @@ Windows 스토어에서 "윈도우8 앱 개발 가이드" 보기 : http://apps.m
  splashscreen.png - 620 x 300 px
 
 
+ [참고] 자동으로 필요한 사이즈의 아이콘을 생성해주는 툴 : https://github.com/DavidBurela/WindowsMarketplaceIconMaker
+
 6. package.appxmanifest 파일을 앱 내용에 맞게 수정합니다. 수정해야 할 부분은 아래와 같습니다.
 
  [Application UI] 탭
