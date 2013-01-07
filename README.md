@@ -10,7 +10,7 @@ Windows 스토어에서 "윈도우8 앱 개발 가이드" 보기 : http://apps.m
 
 [소스 다운로드]
 
- AppDevBook 프로젝트 페이지(https://github.com/rghwang/AppDevBook)에서 상단 메뉴의 ZIP 버튼을 클릭하여 프로젝트 소스의 압축파일을 다운로드 받습니다.
+ AppDevBook 프로젝트 페이지(https://github.com/rghwang/AppDevBook ) 에서 상단 메뉴의 ZIP 버튼을 클릭하여 프로젝트 소스의 압축파일을 다운로드 받습니다.
 
 [사용방법]
 
