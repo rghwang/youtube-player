@@ -37,6 +37,52 @@ Windows 스토어에서 "윈도우8 앱 개발 가이드" 다운로드하기 : h
  유튜브 비디오 ID는 유튜브 동영상 페이지에서 주소 창에 마지막 11자리 코드를 복사해서 입력하면 됩니다. 
 
 
-3. pages/items의 items.html 파일에서 아래 부분을 수정합니다. 앱 첫화면에서 표시되는 제목 타이틀을 나타냅니다.
+3. pages/items 폴더에 있는 items.html 파일에서 아래 부분을 수정합니다. 앱 첫화면에서 표시되는 제목 타이틀을 나타냅니다.
 
                 <span class="pagetitle">Windows 8 앱 개발 가이드</span>
+
+4. js 폴더의 default.js 파일의 개인 정보 보호 정책 페이지의 URL을 수정합니다.
+
+    function onSettingsCommand(e) {
+        var uri = Windows.Foundation.Uri("http://uxfactory.tistory.com/10");
+        Windows.System.Launcher.launchUriAsync(uri).then(
+            function (success) {
+                if (success) {
+
+                } else {
+
+                }
+            }
+        );
+    }
+
+ 인터넷 접속을 하는 모든 앱은 스토어 인증 요구사항에 따라서 개인 정보 보호 정책 페이지의 링크를 제공해야 합니다. 앱 제출 시에 설명에도 같은 URL을 반드시 추가해야 합니다. 개인 정보 보호 정책 페이지에는 "개인 정보를 수집하지 않습니다."와 같은 최소한의 적절한 문구가 제공되면 됩니다.
+
+5. images 폴더의 로고 파일(logo.png, smalllogo.png, storelogo.png, widelogo.png)와 스플레시 스크린 이미지(splashscreen.png)를 교체합니다. 기존 파일 이름과 동일하게 하고, 사이즈도 아래와 같이 정확하게 제공해야 합니다.
+
+ logo.png - 150 x 150 px
+
+ smalllogo.png - 30 x 30 px
+
+ storelogo.png - 50 x 50 px
+
+ widelogo.png - 310 x 150 px
+
+ splashscreen.png - 620 x 300 px
+
+
+6. package.appxmanifest 파일을 앱 내용에 맞게 수정합니다. 수정해야 할 부분은 아래와 같습니다.
+
+ [Application UI] 탭
+
+ Display name : 앱 이름
+
+ Description : 앱에 대한 설명
+
+ [Packaging] 탭
+
+ Package display name: 앱 이름
+
+ Publisher display name: 제공자 이름
+
+
