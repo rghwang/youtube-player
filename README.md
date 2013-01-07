@@ -10,10 +10,7 @@ Windows 스토어에서 "윈도우8 앱 개발 가이드" 보기 : http://apps.m
 
 [소스 다운로드]
 
-1. GitHub for Windows를 다운로드하여 설치합니다. 다운로드 링크 : http://windows.github.com/
-
-2. AppDevBook 프로젝트 페이지(https://github.com/rghwang/AppDevBook)에서 "Clone in Windows" 버튼을 클릭하여 프로젝트 소스를 로컬PC에 다운로드 받습니다.
-
+ AppDevBook 프로젝트 페이지(https://github.com/rghwang/AppDevBook)에서 상단 메뉴의 ZIP 버튼을 클릭하여 프로젝트 소스의 압축파일을 다운로드 받습니다.
 
 [사용방법]
 
