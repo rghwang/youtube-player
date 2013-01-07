@@ -43,18 +43,6 @@ Windows 스토어에서 "윈도우8 앱 개발 가이드" 다운로드하기 : h
 
 4. js 폴더의 default.js 파일의 개인 정보 보호 정책 페이지의 URL을 수정합니다.
 
-    function onSettingsCommand(e) {
-        var uri = Windows.Foundation.Uri("http://uxfactory.tistory.com/10");
-        Windows.System.Launcher.launchUriAsync(uri).then(
-            function (success) {
-                if (success) {
-
-                } else {
-
-                }
-            }
-        );
-    }
 
  인터넷 접속을 하는 모든 앱은 스토어 인증 요구사항에 따라서 개인 정보 보호 정책 페이지의 링크를 제공해야 합니다. 앱 제출 시에 설명에도 같은 URL을 반드시 추가해야 합니다. 개인 정보 보호 정책 페이지에는 "개인 정보를 수집하지 않습니다."와 같은 최소한의 적절한 문구가 제공되면 됩니다.
 
@@ -75,14 +63,14 @@ Windows 스토어에서 "윈도우8 앱 개발 가이드" 다운로드하기 : h
 
  [Application UI] 탭
 
- Display name : 앱 이름
+  Display name : 앱 이름
 
- Description : 앱에 대한 설명
+  Description : 앱에 대한 설명
 
  [Packaging] 탭
 
- Package display name: 앱 이름
+  Package display name: 앱 이름
 
- Publisher display name: 제공자 이름
+  Publisher display name: 제공자 이름
 
 
