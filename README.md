@@ -35,3 +35,8 @@ Windows 스토어에서 "윈도우8 앱 개발 가이드" 다운로드하기 : h
  sampleGroups[숫자]에서 숫자는 동영상 항목이 속하는 그룹을 의미합니다. 0부터 시작하는 일련번호를 갖습니다.(3번째 그룹에 속한 항목은 sampleGroups[2]와 같이 수정) 
  동영상 항목들에 대한 정보를 각각 title(제목), subtitle(부제), description(설명), content(동영상 페이지에 추가할 내용), videoId(유튜브 비디오 ID)와 같이 추가합니다.
  유튜브 비디오 ID는 유튜브 동영상 페이지에서 주소 창에 마지막 11자리 코드를 복사해서 입력하면 됩니다. 
+
+
+3. pages/items의 items.html 파일에서 아래 부분을 수정합니다. 앱 첫화면에서 표시되는 제목 타이틀을 나타냅니다.
+
+                <span class="pagetitle">Windows 8 앱 개발 가이드</span>
