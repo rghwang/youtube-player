@@ -8,6 +8,13 @@ data.js 파일과 html/css 수정만으로 유튜브에 올린 나만의 비디�
 
 Windows 스토어에서 "윈도우8 앱 개발 가이드" 보기 : http://apps.microsoft.com/windows/app/windows-8/769f42d0-870a-4b21-93c0-d2ac1497972a
 
+[소스 다운로드]
+
+1. GitHub for Windows를 다운로드하여 설치합니다. 다운로드 링크 : http://windows.github.com/
+
+2. AppDevBook 프로젝트 페이지(https://github.com/rghwang/AppDevBook)에서 "Clone in Windows" 버튼을 클릭하여 프로젝트 소스를 로컬PC에 다운로드 받습니다.
+
+
 [사용방법]
 
 1. AppDevBook.sln 프로젝트 파일을 Visual Studio 2012에서 열고, js 폴더의 data.js 파일을 열어서 동영상 그룹 정보를 수정합니다.
