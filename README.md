@@ -80,3 +80,4 @@ Windows 스토어에서 "윈도우8 앱 개발 가이드" 보기 : http://apps.m
   Publisher display name: 제공자 이름
 
 
+7. F5를 눌러서 결과를 확인하고, Project-Store-Create App Package 또는 Store-Create App Package 메뉴를 실행해서 스토어 제출용 패키지를 생성합니다.
