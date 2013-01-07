@@ -14,7 +14,7 @@ Windows 스토어에서 "윈도우8 앱 개발 가이드" 다운로드하기 : h
 
 
     // 비디오 그룹 정보 입력 부분
-    // title = 그룹 제목
+     // title = 그룹 제목
     // subtitle = 부제
     var sampleGroups = [
                 { key: "group1", title: "JavaScript를 이용한 앱 개발", subtitle: "Windows 8 스토어 앱 개발", backgroundImage: darkGray },
