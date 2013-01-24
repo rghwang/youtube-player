@@ -61,6 +61,7 @@
     </AppxManifest>
     <None Include="AppDevBook_StoreKey.pfx" />
     <Content Include="css\default.css" />
+    <Content Include="images\bgi.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\smalllogo.png" />
     <Content Include="images\splashscreen.png" />

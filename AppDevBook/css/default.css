@@ -1,6 +1,9 @@
-﻿body{
+﻿body {
     font-family: "Malgun Gothic";
+    background: url(../../images/bgi.jpg) no-repeat center center fixed;
+    background-size: cover;
 }
+
 #contenthost {
     height: 100%;
     width: 100%;

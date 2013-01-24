@@ -1,5 +1,4 @@
-﻿
-.itemspage section[role=main] {
+﻿.itemspage section[role=main] {
     -ms-grid-row: 1;
     -ms-grid-row-span: 2;
 }
@@ -22,7 +21,7 @@
 
     .itemspage .itemslist .item {
         -ms-grid-columns: 1fr;
-        -ms-grid-rows: 1fr 90px;
+        -ms-grid-rows: 1fr 45px;
         display: -ms-grid;
         height: 360px;
         width: 480px;
@@ -34,20 +33,12 @@
 
         .itemspage .itemslist .item .item-overlay {
             -ms-grid-row: 2;
-            -ms-grid-rows: 1fr 21px;
-            display: -ms-grid;
             padding: 6px 15px 2px 15px;
         }
 
             .itemspage .itemslist .item .item-overlay .item-title {
-                -ms-grid-row: 1;
                 overflow: hidden;
                 width: 440px;                
-            }
-
-            .itemspage .itemslist .item .item-overlay .item-subtitle {
-                -ms-grid-row: 2;
-                width: 440px;
             }
 
 @media screen and (-ms-view-state: fullscreen-landscape), screen and (-ms-view-state: fullscreen-portrait), screen and (-ms-view-state: filled) {
