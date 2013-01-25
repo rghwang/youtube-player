@@ -15,13 +15,8 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-<<<<<<< HEAD
-      <VisualElements DisplayName="Windows 8 앱 개발 가이드" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="Windows 8 앱 개발 방법을 다룬 동영상 시리즈를 편리하게 볼 수 있도록 만든 동영상 강좌 앱입니다." ForegroundText="light" BackgroundColor="#464646">
-        <DefaultTile ShowName="allLogos" WideLogo="images\WideLogo.png" />
-=======
       <VisualElements DisplayName="Windows 8 앱 개발 가이드" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="Windows 8 앱 개발 방법을 다룬 동영상 시리즈를 편리하게 볼 수 있도록 만든 동영상 강좌 앱입니다." ForegroundText="light" BackgroundColor="#01AEF0">
         <DefaultTile ShowName="allLogos" WideLogo="images\WideLogo.png" ShortName="Windows 8 앱 개발" />
->>>>>>> design
         <SplashScreen Image="images\splashscreen.png" />
       </VisualElements>
       <Extensions>
