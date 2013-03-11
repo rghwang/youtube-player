@@ -4,7 +4,12 @@
     height: 100%;
     width: 100%;
 }
-
+#player {
+    background-color:white;
+}
+.win-listview.win-selectionstylefilled .win-container:hover {
+    background-color: rgb(0, 0, 0);
+}
     .splitpage header[role=banner] {
         -ms-grid-column: 1;
         -ms-grid-column-span: 2;

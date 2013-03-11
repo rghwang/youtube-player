@@ -4,7 +4,7 @@
   <Properties>
     <DisplayName>Windows 8 앱 개발 가이드</DisplayName>
     <PublisherDisplayName>UXFactory</PublisherDisplayName>
-    <Logo>images\storelogo.png</Logo>
+    <Logo>images\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
     <OSMinVersion>6.2.1</OSMinVersion>
@@ -15,9 +15,9 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <VisualElements DisplayName="Windows 8 앱 개발 가이드" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="Windows 8 앱 개발 방법을 다룬 동영상 시리즈를 편리하게 볼 수 있도록 만든 동영상 강좌 앱입니다." ForegroundText="light" BackgroundColor="#01AEF0">
-        <DefaultTile ShowName="allLogos" WideLogo="images\WideLogo.png" ShortName="Windows 8 앱 개발" />
-        <SplashScreen Image="images\splashscreen.png" />
+      <VisualElements DisplayName="LOL 베인 공략" Logo="images\logo.png" SmallLogo="images\SmallLogo.png" Description="LOL 챔피언 공략을 쉽게 모아서 볼 수 있는 앱입니다." ForegroundText="dark" BackgroundColor="#FFFFFF">
+        <DefaultTile ShowName="noLogos" ShortName="LOL 베인 공략" />
+        <SplashScreen Image="images\SplashScreen.png" />
       </VisualElements>
       <Extensions>
         <Extension Category="windows.search" />

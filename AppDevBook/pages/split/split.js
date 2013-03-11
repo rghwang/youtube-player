@@ -113,6 +113,7 @@
             player.style.top = "0px";
             player.style.left = "0px";
             this.backbutton = document.querySelector(".win-backbutton");
+            this.backbutton.removeAttribute("disabled");
             this.backbuttonHandler = this.backbutton.onclick;
                 
             this.backbutton.onclick = this.restoreFullScreen.bind(this);
@@ -129,6 +130,7 @@
             player.style.display = "block";
             player.style.position = "relative";
             this.backbutton.onclick = this.backbuttonHandler;
+            this.backbutton.setAttribute("disabled", "disabled");
         },
         onDataRequested: function (e) {
             var request = e.request;
@@ -221,6 +223,8 @@
         _selectionChanged: function (args) {
             var listView = document.body.querySelector(".itemlist").winControl;
             var details;
+            var _this = this;
+
             // By default, the selection is restriced to a single item.
             listView.selection.getItems().done(function updateDetails(items) {
                 if (items.length > 0) {
@@ -245,13 +249,17 @@
                         var ifrm = document.getElementById("player");
 
                         var vid = items[0].data.videoId;
-                        var embed_url = "http://www.youtube.com/embed/" + vid + "?enablejsapi=1&rel=0&showinfo=0&autoplay=1&";
                         if (vid) {
+                            var embed_url = "http://www.youtube.com/embed/" + vid + "?enablejsapi=1&rel=0&showinfo=0&autoplay=1&";
                             ifrm.src = embed_url;
+                            ifrm.onload = null;
                             ifrm.width = window.getComputedStyle(document.querySelector(".articlesection")).width;
                             ifrm.height = ifrm.width * 390 / 640;
                         } else {
-                            ifrm.src = "/pages/blank/blank.html";
+                            ifrm.src = items[0].data.url;
+                            ifrm.onload = function () {
+                                _this.forceFullScreen();
+                            }
                         }
                     }
                 }
