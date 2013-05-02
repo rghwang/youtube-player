@@ -224,10 +224,12 @@
             var listView = document.body.querySelector(".itemlist").winControl;
             var details;
             var _this = this;
+            var isSame = false;
 
             // By default, the selection is restriced to a single item.
             listView.selection.getItems().done(function updateDetails(items) {
                 if (items.length > 0) {
+                    if (this._itemSelectionIndex === items[0].index) isSame = true;
                     this._itemSelectionIndex = items[0].index;
 
                     if (this._itemSelectionIndex >= 0)
@@ -250,9 +252,11 @@
 
                         var vid = items[0].data.videoId;
                         if (vid) {
-                            var embed_url = "http://www.youtube.com/embed/" + vid + "?enablejsapi=1&rel=0&showinfo=0&autoplay=1&";
-                            ifrm.src = embed_url;
-                            ifrm.onload = null;
+                            if (!isSame) {
+                                var embed_url = "http://www.youtube.com/embed/" + vid + "?enablejsapi=1&rel=0&showinfo=0&autoplay=1&";
+                                ifrm.src = embed_url;
+                                ifrm.onload = null;
+                            }
                             ifrm.width = window.getComputedStyle(document.querySelector(".articlesection")).width;
                             ifrm.height = ifrm.width * 390 / 640;
                         } else {
